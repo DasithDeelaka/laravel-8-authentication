@@ -21,6 +21,8 @@
                       </thead>
                       <tbody>
                          <tr>
+                            <td>{{ $LoggedUserInfo['name'] }}</td>
+                            <td>{{ $LoggedUserInfo['email'] }}</td>
                             <td><a href="{{ route('auth.logout') }}">Logout</a></td>
                          </tr>
                       </tbody>

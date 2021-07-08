@@ -68,17 +68,21 @@ class MainController extends Controller
     }
 
     function dashboard(){
-        return view('admin.dashboard');
+        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+        return view('admin.dashboard', $data);
     }
 
     function settings(){
-        return view('admin.settings');
+        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+        return view('admin.settings', $data);
     }
 
     function profile(){
-        return view('admin.profile');
+        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+        return view('admin.profile', $data);
     }
     function staff(){
-        return view('admin.staff');
+        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+        return view('admin.staff', $data);
     }
 }

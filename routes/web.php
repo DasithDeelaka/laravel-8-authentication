@@ -18,15 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
 
-Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
-Route::get('/auth/register',[MainController::class, 'register'])->name('auth.register');
+Route::group(['middleware'=>['AuthCheck']], function(){
+    Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
+    Route::get('/auth/register',[MainController::class, 'register'])->name('auth.register');
 
-Route::get('/admin/dashboard',[MainController::class, 'dashboard']);
-Route::get('/admin/settings',[MainController::class,'settings']);
-Route::get('/admin/profile',[MainController::class,'profile']);
-Route::get('/admin/staff',[MainController::class,'staff']);
+    Route::get('/admin/dashboard',[MainController::class, 'dashboard']);
+    Route::get('/admin/settings',[MainController::class,'settings']);
+    Route::get('/admin/profile',[MainController::class,'profile']);
+    Route::get('/admin/staff',[MainController::class,'staff']);
+});
